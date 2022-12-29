@@ -1,0 +1,50 @@
+@import url('https://fonts.googleapis.com/css?family=Muli&display=swap');
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Muli', sans-serif;
+  overflow: hidden;
+  margin: 0;
+  background: #0000cd;
+  height: 100vh; /*боди будет занимать 100% пространства*/
+  display: flex; /*чтобы выровнить слайды*/
+  justify-content: center; /*чтобы выровнить слайды по центру по горизонтали*/
+  align-items: center; /*чтобы выровнить слайды по центру по вертикали*/
+}
+.container {
+  width: 100%;
+  display: flex; /*гибкий экран*/
+  padding: 0 20px;
+}
+.slide {
+  height: 80vh; /* это 80% от видимой части экрана*/
+  border-radius: 20px;
+  margin: 10px;
+  cursor: pointer; /*при наведении курсора на слайдер, показыает что с ним можно взаимодействовать*/
+  color: #fff;
+  text-shadow: 2px 2px 2px #000;
+  flex: 1; /*каждый слайд растягивается пропорционально*/
+  background-size: cover; /*позиционирование картинки?*/
+  background-position: center; /*в слайде фото центруется*/
+  background-repeat: no-repeat; /*фоновый повтор: без повтора*/
+  position: relative; /*позиция слайда будет подстраиваться под позицию заголовка слайда, у которого будет позиция абсолютная*/
+  transition: all 500ms ease-in-out; /*переход: все за 500 мс плавный вход-выход;*/
+}
+.slide h3 {
+  position: absolute;
+  font-size: 24px;
+  bottom: 20px;
+  left: 20px;
+  margin: 0; /*убираем дефолтные отступы*/
+  opacity: 0; /*заголовок невиден, если слайд в неактивном состоянии*/
+}
+.slide.active {
+  flex: 10; /*по умолчанию в селекторе slide у нас стоит flex 1, а кода он будет активным, то станет 10*/
+}
+.slide.active h3 {
+  opacity: 1; /*если слайд активен, заголовок виден на 1*/
+  transition: opacity 0.3s ease-in 0.4s; /*переход: непрозрачность 0,3 с плавный переход*/
+}
